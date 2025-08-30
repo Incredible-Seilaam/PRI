@@ -43,14 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
 }
 ?>
 
+<link rel="stylesheet" href="css/style.css">
+
 <h2>Import her z XML</h2>
 
-<?php if ($zprava) echo "<p><b>$zprava</b></p>"; ?>
+<?php if ($zprava): ?>
+    <p id="zprava"><b><?= htmlspecialchars($zprava) ?></b></p>
+<?php endif; ?>
 
 <form method="post" enctype="multipart/form-data">
     <label>Vyber XML soubor:</label>
     <input type="file" name="xml_file" accept=".xml" required>
     <button type="submit">Importovat</button>
 </form>
-
 <p><a href="index.php">Zpět na přehled</a></p>
+<script src="js/script.js" defer></script>

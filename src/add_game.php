@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<link rel="stylesheet" href="css/style.css">
 <h2>Přidat novou hru</h2>
 <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
 <form method="post">
@@ -43,3 +44,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Uložit</button>
 </form>
 <p><a href="index.php">Zpět na přehled</a></p>
+<script src="js/script.js" defer></script>
