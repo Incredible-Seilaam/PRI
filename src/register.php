@@ -24,13 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<link rel="stylesheet" href="css/style.css">
 <h2>Registrace</h2>
 <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
 <form method="post">
-    Jméno: <input name="jmeno" required><br>
+    Jméno: <input type="text" name="jmeno" required><br>
     E-mail: <input type="email" name="email" required><br>
     Heslo: <input type="password" name="heslo" required><br>
     <button type="submit">Registrovat</button>
 </form>
 <p>Už máš účet? <a href="login.php">Přihlas se</a>.</p>
+<p><a href="index.php">Zpět na hlavní stránku</a></p>
+<script src="js/script.js" defer></script>

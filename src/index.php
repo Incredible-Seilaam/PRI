@@ -17,21 +17,32 @@ $stmt->execute($params);
 $hry = $stmt->fetchAll();
 ?>
 
-<h1>Game Library</h1>
+<link rel="stylesheet" href="css/style.css">
 
+<h1>🎮 Game Library</h1>
+
+<nav>
 <?php if (isset($_SESSION['user_id'])): ?>
-    <p>Vítej, <?= htmlspecialchars($_SESSION['jmeno']) ?> | <a href="add_game.php">Přidat hru</a> | <a href="logout.php">Odhlásit</a></p>
+    <b>Vítej, <?= htmlspecialchars($_SESSION['jmeno']) ?></b> |
+    <a href="add_game.php">➕ Přidat hru</a> |
+    <a href="import_xml.php">📥 Import XML</a> |
+    <a href="export_xml.php" target="_blank">📤 Export XML</a> |
+    <a href="logout.php">🚪 Odhlásit se</a>
 <?php else: ?>
-    <p><a href="login.php">Přihlásit</a> | <a href="register.php">Registrovat</a></p>
+    <a href="index.php">🏠 Domů</a> |
+    <a href="login.php">🔑 Přihlásit se</a> |
+    <a href="register.php">🆕 Registrovat</a>
 <?php endif; ?>
+</nav>
 
 <form method="get">
-    Filtrovat podle žánru: <input name="zanr" value="<?= htmlspecialchars($filtr) ?>">
+    <label>Filtrovat podle žánru:</label>
+    <input name="zanr" value="<?= htmlspecialchars($filtr) ?>">
     <button type="submit">Filtrovat</button>
 </form>
 
-<table border="1" cellpadding="4">
-    <tr>
+<table>
+    <tr data-href="detail_game.php?id=<?= $hra['id'] ?>">
         <th>Název</th>
         <th>Žánr</th>
         <th>Platforma</th>
@@ -41,7 +52,7 @@ $hry = $stmt->fetchAll();
         <th>Detail</th>
     </tr>
     <?php foreach ($hry as $hra): ?>
-        <tr>
+        <tr data-href="detail_game.php?id=<?= $hra['id'] ?>">
             <td><?= htmlspecialchars($hra['nazev']) ?></td>
             <td><?= htmlspecialchars($hra['zanr']) ?></td>
             <td><?= htmlspecialchars($hra['platforma']) ?></td>
@@ -52,3 +63,5 @@ $hry = $stmt->fetchAll();
         </tr>
     <?php endforeach; ?>
 </table>
+<p>Celkem her: <?= count($hry) ?></p>
+<script src="js/script.js" defer></script>

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<link rel="stylesheet" href="css/style.css">
 <h2>Přihlášení</h2>
 <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
 <form method="post">
@@ -30,3 +30,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Přihlásit se</button>
 </form>
 <p>Nemáš účet? <a href="register.php">Registruj se</a>.</p>
+<p><a href="index.php">Zpět na hlavní stránku</a></p>
+<script src="js/script.js" defer></script>
