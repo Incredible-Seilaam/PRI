@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="hry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="hra" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nazev" type="xs:string"/>
+              <xs:element name="zanr" type="xs:string" minOccurs="0"/>
+              <xs:element name="platforma" type="xs:string" minOccurs="0"/>
+              <xs:element name="rok" type="xs:positiveInteger"/>
+              <xs:element name="hodnoceni" type="xs:decimal"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
