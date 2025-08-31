@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS hry (
     zanr TEXT,
     platforma TEXT,
     rok INT,
-    hodnoceni NUMERIC(2,1),
+    hodnoceni NUMERIC(3,1),
     uzivatel_id INT REFERENCES uzivatele(id)
 );

@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2>Přidat novou hru</h2>
 <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
 <form method="post">
-    Název: <input name="nazev" required><br>
-    Žánr: <input name="zanr"><br>
-    Platforma: <input name="platforma"><br>
+    Název: <input type="text" name="nazev" required><br>
+    Žánr: <input type="text" name="zanr"><br>
+    Platforma: <input type="text" name="platforma"><br>
     Rok: <input name="rok" type="number" min="1970" max="2099" required><br>
-    Hodnocení (0–10): <input name="hodnoceni" type="number" step="0.1" min="0" max="10" required><br>
+    Hodnocení (0–10): <input name="hodnoceni" type="number" step="0.5" min="0" max="10" required><br>
     <button type="submit">Uložit</button>
 </form>
 <p><a href="index.php">Zpět na přehled</a></p>

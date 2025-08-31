@@ -15,6 +15,8 @@ $query .= " ORDER BY rok DESC";
 $stmt = $pdo->prepare($query);
 $stmt->execute($params);
 $hry = $stmt->fetchAll();
+$zanryStmt = $pdo->query("SELECT DISTINCT zanr FROM hry WHERE zanr IS NOT NULL AND zanr <> '' ORDER BY zanr");
+$zanry = $zanryStmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <link rel="stylesheet" href="css/style.css">
@@ -35,11 +37,20 @@ $hry = $stmt->fetchAll();
 <?php endif; ?>
 </nav>
 
-<form method="get">
-    <label>Filtrovat podle žánru:</label>
-    <input name="zanr" value="<?= htmlspecialchars($filtr) ?>">
-    <button type="submit">Filtrovat</button>
+<form method="get" style="margin-bottom: 1em; display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;">
+    <label for="zanr" style="margin: 0; white-space: nowrap;">
+        Filtrovat podle žánru:
+    </label>
+    <select name="zanr" id="zanr" onchange="this.form.submit()">
+        <option value="">— Zobrazit vše —</option>
+        <?php foreach ($zanry as $z): ?>
+            <option value="<?= htmlspecialchars($z) ?>" <?= $filtr === $z ? 'selected' : '' ?>>
+                <?= htmlspecialchars($z) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
 </form>
+
 
 <table>
     <tr data-href="detail_game.php?id=<?= $hra['id'] ?>">

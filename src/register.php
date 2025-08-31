@@ -25,14 +25,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <link rel="stylesheet" href="css/style.css">
-<h2>Registrace</h2>
-<?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
-<form method="post">
-    Jméno: <input type="text" name="jmeno" required><br>
-    E-mail: <input type="email" name="email" required><br>
-    Heslo: <input type="password" name="heslo" required><br>
-    <button type="submit">Registrovat</button>
-</form>
-<p>Už máš účet? <a href="login.php">Přihlas se</a>.</p>
-<p><a href="index.php">Zpět na hlavní stránku</a></p>
-<script src="js/script.js" defer></script>
+<div class="full-center">
+    <h2>Registrace</h2>
+
+    <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
+
+    <div>
+        <form method="post">
+            <label for="jmeno">Jméno:</label>
+            <input id="jmeno" type="text" name="jmeno" required>
+
+            <label for="email">E-mail:</label>
+            <input id="email" type="email" name="email" required>
+            <label for="heslo">Heslo:</label>
+            <input id="heslo" type="password" name="heslo" required>
+            <button type="submit">Registrovat</button>
+        </form>
+    </div>
+
+    <div class="form-links">
+        <p>Už máš účet? <a href="login.php">Přihlaš se</a>.</p>
+        <p><a href="index.php">Zpět na hlavní stránku</a></p>
+    </div>
+</dic>
+
+    <script src="js/script.js" defer></script>
