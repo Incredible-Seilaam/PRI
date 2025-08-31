@@ -1,54 +1,52 @@
 <?php
-session_start();
+require 'session_check.php';
 require 'db.php';
 
+$user_id = $_SESSION['user_id'];
 $filtr = $_GET['zanr'] ?? '';
 
-// Base query to fetch unique games with average ratings
+// SQL to get user's own games + rating
 $query = "
-SELECT 
+SELECT
     games.id,
     games.nazev,
     games.zanr,
     games.platforma,
     games.rok,
-    ROUND(AVG(user_games.hodnoceni), 1) AS prumer
-FROM games
-JOIN user_games ON games.id = user_games.game_id
+    user_games.hodnoceni
+FROM user_games
+JOIN games ON games.id = user_games.game_id
+WHERE user_games.user_id = ?
 ";
 
-$params = [];
+$params = [$user_id];
 if ($filtr) {
-    $query .= " WHERE games.zanr ILIKE ?";
+    $query .= " AND games.zanr ILIKE ?";
     $params[] = "%$filtr%";
 }
 
-$query .= " GROUP BY games.id ORDER BY games.nazev";
+$query .= " ORDER BY games.nazev";
 $stmt = $pdo->prepare($query);
 $stmt->execute($params);
 $hry = $stmt->fetchAll();
 
-// Get genre list for filter dropdown
-$zanryStmt = $pdo->query("SELECT DISTINCT zanr FROM games WHERE zanr IS NOT NULL AND zanr <> '' ORDER BY zanr");
+// Genre filter
+$zanryStmt = $pdo->prepare("SELECT DISTINCT games.zanr FROM user_games JOIN games ON games.id = user_games.game_id WHERE user_games.user_id = ? AND games.zanr IS NOT NULL AND games.zanr <> '' ORDER BY games.zanr");
+$zanryStmt->execute([$user_id]);
 $zanry = $zanryStmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <link rel="stylesheet" href="css/style.css">
 
-<h1>📚 Veřejná knihovna her</h1>
+<h1>🎮 Moje herní knihovna</h1>
 
 <nav>
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <b><?= htmlspecialchars($_SESSION['jmeno']) ?></b> |
-        <a href="my_library.php">🎮 Moje knihovna</a> |
-        <a href="add_game.php">➕ Přidat hru</a> |
-        <a href="import_xml.php">📥 Import XML</a> |
-        <a href="export_xml.php" target="_blank">📤 Export XML</a> |
-        <a href="logout.php">🚪 Odhlásit se</a>
-    <?php else: ?>
-        <a href="login.php">🔑 Přihlásit se</a> |
-        <a href="register.php">🆕 Registrovat</a>
-    <?php endif; ?>
+    <b><?= htmlspecialchars($_SESSION['jmeno']) ?></b> |
+    <a href="index.php">📚 Veřejná knihovna</a> |
+    <a href="add_game.php">➕ Přidat hru</a> |
+    <a href="import_xml.php">📥 Import XML</a> |
+    <a href="export_xml.php" target="_blank">📤 Export XML</a> |
+    <a href="logout.php">🚪 Odhlásit se</a>
 </nav>
 
 <form method="get" style="margin-bottom: 1em; display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;">
@@ -71,7 +69,7 @@ $zanry = $zanryStmt->fetchAll(PDO::FETCH_COLUMN);
         <th>Žánr</th>
         <th>Platforma</th>
         <th>Rok</th>
-        <th>Průměrné hodnocení</th>
+        <th>Moje hodnocení</th>
     </tr>
     <?php foreach ($hry as $hra): ?>
         <tr data-href="detail_game.php?id=<?= $hra['id'] ?>">
@@ -79,11 +77,11 @@ $zanry = $zanryStmt->fetchAll(PDO::FETCH_COLUMN);
             <td><?= htmlspecialchars($hra['zanr']) ?></td>
             <td><?= htmlspecialchars($hra['platforma']) ?></td>
             <td><?= $hra['rok'] ?></td>
-            <td><?= $hra['prumer'] ?></td>
+            <td><?= $hra['hodnoceni'] ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
 
-<p>Celkem unikátních her: <?= count($hry) ?></p>
+<p>Celkem her: <?= count($hry) ?></p>
 
 <script src="js/script.js" defer></script>

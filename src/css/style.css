@@ -1,21 +1,33 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: consolas, consolas;
     background-color: #f4f4f4;
     margin: 2em;
     color: #333;
+    font-size: large;
 }
 
 h1, h2 {
     color: #2c3e50;
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 0.5em;
 }
 
+/* Elegant links */
 a {
-    color: #007bff;
+    color: #5c6bc0; /* soft indigo */
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
 }
 
 a:hover {
+    color: #3949ab; /* darker indigo */
     text-decoration: underline;
+}
+
+a:visited {
+    color: #5c6bc0;
 }
 
 nav {
@@ -24,6 +36,32 @@ nav {
     background-color: #e0e0e0;
     border-radius: 5px;
 }
+
+nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 1em;
+    padding: 6px 12px;
+    border-radius: 6px; /* makes the hover look like a capsule */
+    display: inline-block;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+nav a:hover {
+    background-color: #d6e4ff;
+    color: #0056b3;
+    text-decoration: none;
+    transform: translateX(2px); /* slight slide to the right */
+}
+
+
+nav a:visited {
+    color: #2c3e50; /* same as default to prevent purple links */
+}
+
 
 table {
     width: 100%;
@@ -49,10 +87,11 @@ table tr:hover {
 
 form {
     background-color: white;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    max-width: 500px;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    max-width: 700px;
+    width: 100%;
 }
 
 input[type="text"],
@@ -63,7 +102,7 @@ input[type="file"],
 select {
     width: 100%;
     padding: 8px;
-    margin-top: 6px;
+    margin-top: 12px;
     margin-bottom: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -77,8 +116,38 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: large;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+.full-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    gap: 1em;
+    text-align: center;
+}
+
+.form-links {
+    margin-top: 1em;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.form-links p {
+    margin: 6px 0;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #333;
 }
