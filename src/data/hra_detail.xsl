@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:output method="html" indent="yes" />
 
   <xsl:template match="/hra">
     <html>
-        <head>
-        <meta charset="UTF-8"/>
-        <title><xsl:value-of select="nazev"/></title>
-
+      <head>
+        <title><xsl:value-of select="nazev" /></title>
         <link rel="stylesheet" href="css/style.css"/>
-        <script src="js/script.js" defer="defer"></script>
-        </head>
-
-
+      </head>
       <body>
-        <h2><xsl:value-of select="nazev"/></h2>
-        <p><b>Žánr:</b> <xsl:value-of select="zanr"/></p>
-        <p><b>Platforma:</b> <xsl:value-of select="platforma"/></p>
-        <p><b>Rok:</b> <xsl:value-of select="rok"/></p>
-        <p><b>Hodnocení:</b> <xsl:value-of select="hodnoceni"/></p>
-        <p><a href="index.php">Zpět na přehled</a></p>
+        <h1><xsl:value-of select="nazev" /></h1>
+        <ul>
+          <li><strong>Žánr:</strong> <xsl:value-of select="zanr" /></li>
+          <li><strong>Platforma:</strong> <xsl:value-of select="platforma" /></li>
+          <li><strong>Rok:</strong> <xsl:value-of select="rok" /></li>
+          <li><strong>Průměrné hodnocení:</strong> <xsl:value-of select="prumer" /></li>
+        </ul>
+        <p><a href="index.php">⬅ Zpět na knihovnu</a></p>
       </body>
     </html>
   </xsl:template>
-
 </xsl:stylesheet>

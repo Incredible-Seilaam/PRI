@@ -22,21 +22,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <link rel="stylesheet" href="css/style.css">
+
 <div class="full-center">
-    <h2 >Přihlášení</h2>
+    <h1>Přihlášení</h1>
 
-    <?php if ($chyba) echo "<p style='color:red;'>$chyba</p>"; ?>
-    
-    <div>    
-        <form method="post">
-            <label for="email">E-mail:</label>
-            <input id="email" name="email" type="email" required>
+    <?php if ($chyba): ?>
+        <p id="zprava" style="color:red;"><?= htmlspecialchars($chyba) ?></p>
+    <?php endif; ?>
 
-            <label for="heslo">Heslo:</label>
-            <input id="heslo" name="heslo" type="password" required>
-            <button type="submit">Přihlásit se</button>
-        </form>
-    </div>
+    <form method="post">
+        <label for="email">E-mail:</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="heslo">Heslo:</label>
+        <input id="heslo" name="heslo" type="password" required>
+
+        <button type="submit">Přihlásit se</button>
+    </form>
 
     <div class="form-links">
         <p>Nemáš účet? <a href="register.php">Registruj se.</a></p>
