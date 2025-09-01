@@ -1,49 +1,49 @@
 body {
-    font-family: consolas, consolas;
-    background-color: #f4f4f4;
+    font-family: 'Consolas', monospace;
+    background-color: #1a1a2e;
     margin: 2em;
-    color: #333;
+    color: #e0e0e0;
     font-size: large;
 }
 
 h1, h2 {
-    color: #2c3e50;
+    color: #ff4d6d;
     font-size: 2em;
     font-weight: 800;
     margin-bottom: 0.5em;
 }
 
-/* Elegant links */
+/* Retro-style links */
 a {
-    color: #5c6bc0; /* soft indigo */
+    color: #00f5d4;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-    color: #3949ab; /* darker indigo */
-    text-decoration: underline;
+    color: #ff4d6d;
+    text-decoration: none;
 }
 
 a:visited {
-    color: #5c6bc0;
+    color: #00f5d4;
 }
 
 nav {
     margin-bottom: 1.5em;
     padding: 0.5em;
-    background-color: #e0e0e0;
+    background-color: #2a2a40;
     border-radius: 5px;
 }
 
 nav a {
-    color: #2c3e50;
+    color: #e0e0e0;
     text-decoration: none;
     font-weight: 600;
     margin-right: 1em;
     padding: 6px 12px;
-    border-radius: 6px; /* makes the hover look like a capsule */
+    border-radius: 6px;
     display: inline-block;
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
     line-height: 1.5;
@@ -51,47 +51,56 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #d6e4ff;
-    color: #0056b3;
+    background-color: #9d4edd;
+    color: #fff;
     text-decoration: none;
-    transform: translateX(2px); /* slight slide to the right */
+    transform: translateX(2px);
 }
-
 
 nav a:visited {
-    color: #2c3e50; /* same as default to prevent purple links */
+    color: #e0e0e0;
 }
-
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
+    background-color: #2a2a40;
     margin-bottom: 2em;
 }
 
 table th, table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     text-align: left;
+    color: #e0e0e0;
 }
 
 table th {
-    background-color: #f0f0f0;
+    background-color: #3a3a55;
+    color: #ff4d6d;
 }
 
 table tr:hover {
-    background-color: #f9f9f9;
+    background-color: #333355;
     cursor: pointer;
 }
 
 form {
-    background-color: white;
+    background-color: #2a2a40;
     padding: 2em;
     border-radius: 8px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
     max-width: 500px;
     width: 100%;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #00f5d4;
 }
 
 input[type="text"],
@@ -104,23 +113,30 @@ select {
     padding: 8px;
     margin-top: 12px;
     margin-bottom: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 4px;
+    background-color: #1e1e33;
+    color: #e0e0e0;
     box-sizing: border-box;
 }
 
 button {
-    background-color: #007bff;
+    background-color: #9d4edd;
     color: white;
     padding: 10px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'Consolas', monospace;
     font-size: large;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #7b2cbf;
+}
+
+input{
+    font-family: 'Consolas', monospace;
 }
 
 .full-center {
@@ -143,11 +159,67 @@ button:hover {
     margin: 6px 0;
 }
 
-form label {
-    display: block;
-    text-align: left;
-    margin-top: 12px;
-    margin-bottom: 4px;
+.filter-form {
+    background-color: #2a2a40;
+    padding: 0.1em 1em;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.filter-form label {
+    margin: 0;
     font-weight: bold;
-    color: #333;
+    color: #00f5d4;
+    white-space: nowrap;
+}
+
+.filter-form select {
+    padding: 6px 10px;
+    font-size: 0.95em;
+    border: 1px solid #666;
+    border-radius: 6px;
+    background-color: #1e1e33;
+    color: #e0e0e0;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    padding-right: 2em;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    font-family: 'Consolas', monospace;
+}
+
+.filter-form select:hover {
+    background-color: #2c2c4c;
+    border-color: #00f5d4;
+    cursor: pointer;
+}
+
+.game-detail {
+    background-color: #2a2a40;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    text-align: left;
+    color: #e0e0e0;
+}
+
+.game-detail p {
+    margin: 0.8em 0;
+}
+
+.label {
+    font-weight: bold;
+    color: #00f5d4;
+    min-width: 160px;
 }

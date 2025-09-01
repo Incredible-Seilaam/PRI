@@ -66,20 +66,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
 
 <link rel="stylesheet" href="css/style.css">
 
-<h2>Import her z XML</h2>
+<div class ="full-center">
+    <h1>Import her z XML</h1>
 
-<?php if ($zprava): ?>
-    <div id="zprava" style="background-color:#e0ffe0; padding:10px; border-radius:5px; margin-bottom:1em;">
-        <?= $zprava ?>
+    <?php if ($zprava): ?>
+        <div id="zprava" style="background-color:#e0ffe0; padding:10px; border-radius:5px; margin-bottom:1em;">
+            <?= $zprava ?>
+        </div>
+    <?php endif; ?>
+
+    <form method="post" enctype="multipart/form-data">
+        <label>Vyber XML soubor:</label>
+        <input type="file" name="xml_file" accept=".xml" required>
+        <button type="submit">Importovat</button>
+    </form>
+
+    <div class="form-links">
+        <p><a href="my_library.php">Zpět do mé knihovny</a></p>
     </div>
-<?php endif; ?>
-
-<form method="post" enctype="multipart/form-data">
-    <label>Vyber XML soubor:</label>
-    <input type="file" name="xml_file" accept=".xml" required>
-    <button type="submit">Importovat</button>
-</form>
-
-<p><a href="my_library.php">Zpět do mé knihovny</a></p>
+</div>
 
 <script src="js/script.js" defer></script>

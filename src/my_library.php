@@ -49,7 +49,7 @@ $zanry = $zanryStmt->fetchAll(PDO::FETCH_COLUMN);
     <a href="logout.php">🚪 Odhlásit se</a>
 </nav>
 
-<form method="get" style="margin-bottom: 1em; display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;">
+<form method="get" class="filter-form">
     <label for="zanr" style="margin: 0; white-space: nowrap;">
         Filtrovat podle žánru:
     </label>
