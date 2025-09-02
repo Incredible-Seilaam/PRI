@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input name="rok" id="rok" type="number" min="1970" max="2099" required>
 
         <label for="hodnoceni">Hodnocení (0–10):</label>
-        <input name="hodnoceni" id="hodnoceni" type="number" step="0.1" min="0" max="10" required>
+        <input name="hodnoceni" id="hodnoceni" type="number" step="0.5" min="0" max="10" required>
 
         <button type="submit">Uložit</button>
     </form>

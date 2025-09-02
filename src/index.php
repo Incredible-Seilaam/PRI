@@ -4,7 +4,6 @@ require 'db.php';
 
 $filtr = $_GET['zanr'] ?? '';
 
-// Base query to fetch unique games with average ratings
 $query = "
 SELECT 
     games.id,

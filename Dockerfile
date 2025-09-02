@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# Doinstaluj potřebné knihovny pro PostgreSQL a XSLT
+#potrebne knihovny pro postgresql a XSLT
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libxslt1-dev \

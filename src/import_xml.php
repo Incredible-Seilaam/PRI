@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
     $xml = new DOMDocument();
     $xml->load($xmlFile);
 
-    // Validace vůči XSD
+    // validace proti XSD
     if (!$xml->schemaValidate('data/hry.xsd')) {
         $zprava = "❌ Neplatné XML podle hry.xsd!";
     } else {
